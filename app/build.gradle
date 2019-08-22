@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-// apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
@@ -19,7 +19,8 @@ android {
     }
 }
 
-dependencies { implementation fileTree(dir: 'libs', include: ['*.jar'])
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
