@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "114879471775",
-    "firebase_url": "https://instadroid-d3217.firebaseio.com",
-    "project_id": "instadroid-d3217",
-    "storage_bucket": "instadroid-d3217.appspot.com"
+    "project_number": "446299504431",
+    "firebase_url": "https://insta-33966.firebaseio.com",
+    "project_id": "insta-33966",
+    "storage_bucket": "insta-33966.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:114879471775:android:9d377f18b4a1b240",
+        "mobilesdk_app_id": "1:446299504431:android:9d377f18b4a1b240",
         "android_client_info": {
           "package_name": "com.example.instadroid"
         }
       },
       "oauth_client": [
         {
-          "client_id": "114879471775-gbm1f1bd0d5k1ojq74betqn4lvr77eco.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.instadroid",
-            "certificate_hash": "61a84178062db1be9c2241c48836fa6a0665b104"
-          }
-        },
-        {
-          "client_id": "114879471775-2s7934mqn06trrehfh8dgu5okq6g6rdd.apps.googleusercontent.com",
+          "client_id": "446299504431-u7fmkbfr64sg4p4as00ju55uungl739q.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA6Lk4MbK7IOilyiTXrqE0bMnZ6TKAlp8w"
+          "current_key": "AIzaSyApqt5bfCQL-OlF3VlJx0WlYwtaqbUrGHs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "114879471775-2s7934mqn06trrehfh8dgu5okq6g6rdd.apps.googleusercontent.com",
+              "client_id": "446299504431-u7fmkbfr64sg4p4as00ju55uungl739q.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
