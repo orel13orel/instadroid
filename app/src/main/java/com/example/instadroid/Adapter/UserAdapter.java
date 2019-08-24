@@ -110,7 +110,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             btn_follow=itemView.findViewById(R.id.btn_follow);
         }
     }
-
+//y button not changed to following?
     private void isFollowing(final String userid, final Button button){
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Follow")
                 .child(firebaseUser.getUid()).child("following");
