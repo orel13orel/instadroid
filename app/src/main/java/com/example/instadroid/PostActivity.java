@@ -132,7 +132,7 @@ public class PostActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        //note: error!
         if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && requestCode==RESULT_OK){
             CropImage.ActivityResult result=CropImage.getActivityResult(data);
             imageUri=result.getUri();

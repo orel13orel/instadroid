@@ -23,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,39 +33,39 @@ public class SearchFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
-    private List<User> mUsers;
+    private List<User> userList;
 
     EditText search_bar;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_search, container, false);
-        recyclerView=view.findViewById(R.id.recycler_view);
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
+
+        recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        search_bar =view.findViewById(R.id.search_bar);
+        search_bar = view.findViewById(R.id.search_bar);
 
-        mUsers=new ArrayList<>();
-        userAdapter=new UserAdapter(getContext(),mUsers);
+        userList = new ArrayList<>();
+        userAdapter = new UserAdapter(getContext(), userList, true);
         recyclerView.setAdapter(userAdapter);
 
         readUsers();
         search_bar.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                searchUsers(s.toString().toLowerCase());
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                searchUsers(charSequence.toString().toLowerCase());
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
+            public void afterTextChanged(Editable editable) {
 
             }
         });
@@ -71,17 +73,20 @@ public class SearchFragment extends Fragment {
         return view;
     }
 
-    private  void searchUsers(String s){
-        Query query= FirebaseDatabase.getInstance().getReference("Users").orderByChild("username")
-                .startAt(s).endAt(s+"\uf8ff");
+    private void searchUsers(String s){
+        Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("username")
+                .startAt(s)
+                .endAt(s+"\uf8ff");
+
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mUsers.clear();
-                for(DataSnapshot snapshot:dataSnapshot.getChildren()){
-                    User user=snapshot.getValue(User.class);
-                    mUsers.add(user);
+                userList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    User user = snapshot.getValue(User.class);
+                    userList.add(user);
                 }
+
                 userAdapter.notifyDataSetChanged();
             }
 
@@ -91,17 +96,24 @@ public class SearchFragment extends Fragment {
             }
         });
     }
-    private void readUsers(){
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Users");
+
+    private void readUsers() {
+
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(search_bar.getText().toString().equals("")){
-                    mUsers.clear();
-                    for(DataSnapshot snapshot:dataSnapshot.getChildren()){
-                        User user=snapshot.getValue(User.class);
-                        mUsers.add(user);
+                if (search_bar.getText().toString().equals("")) {
+                    userList.clear();
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        User user = snapshot.getValue(User.class);
+
+                        userList.add(user);
+
                     }
+
                     userAdapter.notifyDataSetChanged();
                 }
             }
