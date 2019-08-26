@@ -7,6 +7,9 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +30,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.example.instadroid.R;
 import com.example.instadroid.model.Post;
 import com.example.instadroid.model.User;
+import com.example.instadroid.Adapter.MyFotoAdapter;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class ProfileFragment extends Fragment {
 
@@ -36,6 +45,9 @@ public class ProfileFragment extends Fragment {
     FirebaseUser firebaseUser;
     String profileid;
     ImageButton my_fotos,saved_fotos;
+    RecyclerView recyclerView;
+    MyFotoAdapter myFotoAdapter;
+    List<Post> postList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,9 +69,18 @@ public class ProfileFragment extends Fragment {
         my_fotos = view.findViewById(R.id.my_fotos);
         saved_fotos = view.findViewById(R.id.saved_fotos);
 
+        recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new GridLayoutManager(getContext(),3);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        postList = new ArrayList<>();
+        myFotoAdapter = new MyFotoAdapter(getContext(),postList);
+        recyclerView.setAdapter(myFotoAdapter);
+
         userInfo();
         getFollowers();
         getNrPosts();
+        myFotos();
 
         if(profileid.equals(firebaseUser.getUid()))
         {
@@ -92,6 +113,30 @@ public class ProfileFragment extends Fragment {
 
         return view;
     }
+
+    private void myFotos(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                postList.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Post post = snapshot.getValue(Post.class);
+                    if(post.getPublisher().equals(profileid)){
+                        postList.add(post);
+                    }
+                }
+                Collections.reverse(postList);
+                myFotoAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     private void userInfo()
     {
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Users").child(profileid);
