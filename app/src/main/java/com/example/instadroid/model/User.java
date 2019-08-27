@@ -1,7 +1,12 @@
 package com.example.instadroid.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class User {
 
+    @PrimaryKey
     private String id;
     private String username;
     private String fullname;
