@@ -19,14 +19,6 @@
         android:layout_height="1dp"
         android:background="@color/colorAccent"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/settings"
-        android:text="Settings"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_margin="8dp"
-        android:textSize="18sp"/>
 
     <View
         android:layout_width="match_parent"

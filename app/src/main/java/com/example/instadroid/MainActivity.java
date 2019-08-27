@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.instadroid.Fragment.HomeFragment;
-import com.example.instadroid.Fragment.NotificationFragment;
 import com.example.instadroid.Fragment.ProfileFragment;
 import com.example.instadroid.Fragment.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
