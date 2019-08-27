@@ -180,32 +180,32 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="-5dp"
-                android:layout_marginRight="-5dp"
-                android:id="@+id/last_bar"
-                android:background="@drawable/button_black"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginLeft="-5dp"-->
+<!--                android:layout_marginRight="-5dp"-->
+<!--                android:id="@+id/last_bar"-->
+<!--                android:background="@drawable/button_black"-->
+<!--                android:orientation="horizontal">-->
 
-                <ImageButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/my_fotos"
-                    android:src="@drawable/ic_grid"
-                    style="?android:attr/buttonBarButtonStyle"/>
+<!--                <ImageButton-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:id="@+id/my_fotos"-->
+<!--                    android:src="@drawable/ic_grid"-->
+<!--                    style="?android:attr/buttonBarButtonStyle"/>-->
 
-                <ImageButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/saved_fotos"
-                    android:src="@drawable/ic_save"
-                    style="?android:attr/buttonBarButtonStyle"/>
-            </LinearLayout>
+<!--                <ImageButton-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:id="@+id/saved_fotos"-->
+<!--                    android:src="@drawable/ic_save"-->
+<!--                    style="?android:attr/buttonBarButtonStyle"/>-->
+<!--            </LinearLayout>-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"

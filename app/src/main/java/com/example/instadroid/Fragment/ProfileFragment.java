@@ -44,7 +44,7 @@ public class ProfileFragment extends Fragment {
     Button edit_profile;
     FirebaseUser firebaseUser;
     String profileid;
-    ImageButton my_fotos,saved_fotos;
+//    ImageButton my_fotos,saved_fotos;
     RecyclerView recyclerView;
     MyFotoAdapter myFotoAdapter;
     List<Post> postList;
@@ -66,8 +66,8 @@ public class ProfileFragment extends Fragment {
         fullname = view.findViewById(R.id.fullname);
         bio = view.findViewById(R.id.bio);
         edit_profile = view.findViewById(R.id.edit_profile);
-        my_fotos = view.findViewById(R.id.my_fotos);
-        saved_fotos = view.findViewById(R.id.saved_fotos);
+//        my_fotos = view.findViewById(R.id.my_fotos);
+//        saved_fotos = view.findViewById(R.id.saved_fotos);
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -89,7 +89,7 @@ public class ProfileFragment extends Fragment {
         else
         {
             checkFollow();
-            saved_fotos.setVisibility(View.GONE);
+//            saved_fotos.setVisibility(View.GONE);
         }
         edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override

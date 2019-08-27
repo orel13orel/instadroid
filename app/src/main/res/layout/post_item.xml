@@ -52,12 +52,12 @@
                 android:src="@drawable/ic_comment"
                 android:layout_toEndOf="@id/like"
                 android:layout_marginStart="10dp"/>
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:id="@+id/save"
-                android:src="@drawable/ic_savee_blake"/>
+<!--            <ImageView-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:id="@+id/save"-->
+<!--                android:src="@drawable/ic_savee_blake"/>-->
 
 
         </RelativeLayout>
