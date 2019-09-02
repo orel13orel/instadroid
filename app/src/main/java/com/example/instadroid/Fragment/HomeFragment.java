@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.instadroid.Adapter.PostAdapter;
+import com.example.instadroid.Controller.ViewModel;
 import com.example.instadroid.R;
 import com.example.instadroid.model.Post;
 import com.google.firebase.auth.FirebaseAuth;
@@ -78,25 +79,42 @@ public class HomeFragment extends Fragment {
     }
 
     private void readPosts(){
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Posts");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                postLists.clear();
-                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    Post post=snapshot.getValue(Post.class);
-                    for(String id:followingList) {
-                        if (post.getPublisher().equals(id)) {
-                            postLists.add(post);
-                         }
-                        }
+//        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Posts");
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                postLists.clear();
+//                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+//                    Post post=snapshot.getValue(Post.class);
+//                    for(String id:followingList) {
+//                        if (post.getPublisher().equals(id)) {
+//                            postLists.add(post);
+//                         }
+//                        }
+//                    }
+//                postAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+
+        ViewModel.getInstance().getPosts().observe(this, posts -> {
+
+            postLists.clear();
+            for(Post post:posts)
+            {
+                if(post.getPublisher().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+                    postLists.add(post);
+                }
+                for(String id:followingList){
+                    if(post.getPublisher().equals(id)){
+                        postLists.add(post);
                     }
+                }
                 postAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }
