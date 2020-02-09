@@ -1,5 +1,5 @@
 # Instadroid
-## Instegram clone for android
+## Instagram clone for android
 
 Firebase real time DB
 
